@@ -16,7 +16,7 @@ export default function Card() {
             <Box overflow="hidden">
                 <NextLink href={`/post/${slug}`}>
                     <a>
-                        <Image src={source ? source : "https://via.placeholder.com/300x200?text=No+Image"} width="100%" height="200px" _hover={{transform: "scale(1.2)"}} transition="transform .2s" />
+                        <Image src={source ? source : "/placeholder.png"} width="100%" height="200px" _hover={{transform: "scale(1.2)"}} transition="transform .2s" />
                     </a>
                 </NextLink>
             </Box>
