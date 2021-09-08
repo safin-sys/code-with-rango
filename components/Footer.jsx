@@ -4,7 +4,7 @@ export default function Footer() {
     return (
         <Box bgColor="#111" color="white">
             <Container maxW="container.lg">
-                <Flex mx="auto" h="64px" justifyContent={["center", "space-between"]} alignItems={["baseline", "center"]} flexDir={["column", "row"]}>
+                <Flex mx="auto" h={["80px", "64px"]} justifyContent={["center", "space-between"]} alignItems={["baseline", "center"]} flexDir={["column", "row"]}>
                     <Flex alignItems="center">
                         <Heading fontSize="1rem" mr=".25rem">Code with Rango</Heading>
                         <Text fontSize=".8rem">© {new Date().getFullYear()}</Text>

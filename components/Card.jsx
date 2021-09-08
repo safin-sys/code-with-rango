@@ -1,5 +1,7 @@
 import { Box, Flex, Heading, Text, Image } from "@chakra-ui/react";
 import NextLink from "next/link"
+import imageUrlBuilder from "@sanity/image-url"
+import client from "../helpers/sanity";
 
 const textStyle = {
     display: "-webkit-box",
@@ -8,23 +10,28 @@ const textStyle = {
     WebkitBoxOrient: "vertical"
 }
 
-export default function Card() {
-    const source = null
-    const slug = null
+const builder = imageUrlBuilder(client)
+
+const urlFor = src => builder.image(src)
+
+export default function Card({ post }) {
+    const { title, mainImage, description, category, slug } = post
+    const source = urlFor(mainImage)
     return (
         <Flex pos="relative" flexDir="column" flex="1 1 301px" minH="220px" mb="1.5rem">
             <Box overflow="hidden">
-                <NextLink href={`/post/${slug}`}>
+                <NextLink href={`/${slug.current}`}>
                     <a>
-                        <Image src={source ? source : "/placeholder.png"} width="100%" height="200px" _hover={{transform: "scale(1.2)"}} transition="transform .2s" alt="Featured Article Cover" />
+                        <Image src={source ? source : "/placeholder.png"} width="100%" height="200px" _hover={{ transform: "scale(1.2)" }} transition="transform .2s" alt="Featured Article Cover" />
                     </a>
                 </NextLink>
             </Box>
-            <NextLink href={`/post/${slug}`}>
+            <NextLink href={`/${slug.current}`}>
                 <a>
                     <Box mt="1.25rem">
-                        <Heading fontSize="1.5rem" mb=".5rem">Start here for a quick overview of everything you need to know</Heading>
-                        <Text style={textStyle}>Weve crammed the most important information to help you get started with Ghost into this one post. Its your cheat-sheet to get started, and your shortcut to advanced features.</Text>
+                        <Text textTransform="uppercase" color="#ff1a75" fontWeight="semibold" fontSize=".75rem" mt=".5rem">{category}</Text>
+                        <Heading fontSize="1.5rem" mb=".5rem">{title}</Heading>
+                        <Text style={textStyle} color="gray.600">{description}</Text>
                     </Box>
                 </a>
             </NextLink>
