@@ -21,8 +21,8 @@ export default function Home({ categories, posts }) {
 	return (
 		<>
 			<Head>
-				<title>Code with Rango</title>
-				<meta name="description" content="Learn about technology." />
+				<title>Custom ROM BD</title>
+				<meta name="description" content="Custom Rom installation Guide" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Cards posts={posts} />
