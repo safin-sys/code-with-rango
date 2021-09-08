@@ -12,7 +12,7 @@ export default function Cards({ posts }) {
             if (categories.includes(post.category)) return
             setCategories(oldCat => [...oldCat, post.category])
         })
-    }, [posts])
+    }, [])
 
 
     const handleCategoryChange = (e) => {

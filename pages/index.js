@@ -17,7 +17,7 @@ export default function Home({ categories, posts }) {
 	const { colorMode, toggleColorMode } = useColorMode()
 	useEffect(() => {
 		colorMode === "dark" && toggleColorMode()
-	}, [colorMode])
+	}, [])
 	return (
 		<>
 			<Head>

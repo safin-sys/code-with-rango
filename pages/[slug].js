@@ -34,12 +34,12 @@ const urlFor = src => builder.image(src)
 const serializer = {
     types: {
         image: props => (
-            <Image my="1.5rem" src={urlFor(props.node.asset)} />
+            <Image my="1.5rem" src={urlFor(props.node.asset)} alt="Article Featured" />
         ),
         block: props => (
             <>
-                {props.node.children.map((child) => {
-                    return <Text fontSize="1.25rem" lineHeight="1.5rem" color="#35373a" display="inline-block" mt="1rem">{child.text}</Text>
+                {props.node.children.map((child, i) => {
+                    return <Text fontSize="1.25rem" key={i} lineHeight="1.5rem" color="#35373a" display="inline-block" mt="1rem">{child.text}</Text>
                 })}
             </>
         )
@@ -58,7 +58,7 @@ export default function Post({ post }) {
                 <Text textTransform="uppercase" color="#ff1a75" fontWeight="semibold" fontSize=".75rem" mt=".5rem">{category}</Text>
                 <Heading fontSize="3rem">{title}</Heading>
                 <Text mt="1rem" fontSize="1.25rem" opacity=".6">{description}</Text>
-                <Image my="2rem" src={urlFor(mainImage)} />
+                <Image my="2rem" src={urlFor(mainImage)} alt={title} />
                 <RichText blocks={body} serializers={serializer} />
             </Container>
         </>
